@@ -2,4 +2,6 @@ bin/
 .settings/
 .classpath
 .project
-/build/
+.idea/
+build/
+out/
