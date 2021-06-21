@@ -13,7 +13,7 @@ public class Player extends Behaviour{
         System.out.println("Pick a number 1-9 corresponding to spot on the board");
         int position = askForProperInput();
 
-        while (!Board.checkIfPlacementAvailable(position)){
+        while (Board.checkIfPlaceOnBoardTaken(position)){
             System.out.println("This place is occupied");
             position = askForProperInput();
         }

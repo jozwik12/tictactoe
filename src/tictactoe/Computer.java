@@ -13,7 +13,7 @@ public class Computer extends Behaviour{
         int position;
         do {
             position = rand.nextInt(8)+1;
-        } while(!Board.checkIfPlacementAvailable(position));
+        } while(Board.checkIfPlaceOnBoardTaken(position));
 
         Board.putCharacterOntoBoard(position, symbol);
         Board.printBoard();

@@ -34,16 +34,28 @@ public class Main {
       main playing loop
       breaks when someone wins or there is a tie
 */
-        while (true) {
+        while (!Board.checkIfPlayerWon() && !Board.checkIfComputerWon()) {
                 comp.Turn();
-                if (!Board.isBoardPlayable()) break;
+                if (Board.isBoardFull() || Board.checkIfComputerWon()) break;
                 player.Turn();
-                if (!Board.isBoardPlayable()) break;
+                if (Board.isBoardFull() || Board.checkIfPlayerWon()) break;
             }
-        System.out.println();
-        System.out.println("**********");
-        System.out.println("It's a TIE");
-        System.out.println("**********");
 
+        if (Board.checkIfPlayerWon()){
+            System.out.println();
+            System.out.println("***********");
+            System.out.println("  YOU WON  ");
+            System.out.println("***********");
+        } else if (Board.checkIfComputerWon()){
+            System.out.println();
+            System.out.println("***********");
+            System.out.println("  YOU SUCK ");
+            System.out.println("***********");
+        } else {
+            System.out.println();
+            System.out.println("************");
+            System.out.println(" It's a TIE ");
+            System.out.println("************");
+        }
     }
 }

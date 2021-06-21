@@ -2,7 +2,7 @@ package tictactoe;
 
 public class Board {
 
-	private static char[][] board = {	{' ','|',' ','|',' '},
+	private static final char[][] board = {	{' ','|',' ','|',' '},
 										{'-','+','-','+','-'},
 										{' ','|',' ','|',' '},
 										{'-','+','-','+','-'},
@@ -25,14 +25,14 @@ public class Board {
 	}	
 
 //	checks if there is place on the board, returns false if there is symbol already
-	public static boolean checkIfPlacementAvailable(int position) {
-		return boardAddresser(position) == ' ';
+	static boolean checkIfPlaceOnBoardTaken(int position) {
+		return boardAddresser(position) != ' ';
 	}
 	
 	//this function simplifies board addressing
 	//instead of writing indices everytime
-	public static char boardAddresser(int position) {
-		char result = switch (position) {
+	private static char boardAddresser(int position) {
+		return switch (position) {
 			case 1 -> board[0][0];
 			case 2 -> board[0][2];
 			case 3 -> board[0][4];
@@ -44,10 +44,9 @@ public class Board {
 			case 9 -> board[4][4];
 			default -> 'a';
 		};
-		return result;
 	}
 
-	public static void putCharacterOntoBoard(int position, char symbol) {
+	static void putCharacterOntoBoard(int position, char symbol) {
 		amountOfTurns++;
 		switch (position) {
 			case 1 -> board[0][0] = symbol;
@@ -62,17 +61,42 @@ public class Board {
 		}
 	}
 
-//	public static boolean checkIfThereIsWinner(){
-//		boolean winner = false;
-//
-//		return winner;
-//	}
-
-	public static boolean isBoardPlayable(){
-		return Board.amountOfTurns < 9;
+	// cVal is short for character value
+	// returns ASCII decimal value of character at given position on board
+	public static int cVal(int position){
+		char sym = boardAddresser(position);
+		int value = sym;
+		return value;
 	}
 
-	public static int getAmountOfTurns() {
-		return amountOfTurns;
+	public static boolean checkIfComputerWon(){
+		boolean winner = false;
+		if (cVal(1)+cVal(2)+cVal(3)==237) winner = true;
+		if (cVal(4)+cVal(5)+cVal(6)==237) winner = true;
+		if (cVal(7)+cVal(8)+cVal(9)==237) winner = true;
+		if (cVal(1)+cVal(4)+cVal(7)==237) winner = true;
+		if (cVal(2)+cVal(5)+cVal(8)==237) winner = true;
+		if (cVal(3)+cVal(6)+cVal(9)==237) winner = true;
+		if (cVal(1)+cVal(5)+cVal(9)==237) winner = true;
+		if (cVal(3)+cVal(5)+cVal(7)==237) winner = true;
+		return winner;
 	}
+
+	public static boolean checkIfPlayerWon(){
+		boolean winner = false;
+		if (cVal(1)+cVal(2)+cVal(3)==264) winner = true;
+		if (cVal(4)+cVal(5)+cVal(6)==264) winner = true;
+		if (cVal(7)+cVal(8)+cVal(9)==264) winner = true;
+		if (cVal(1)+cVal(4)+cVal(7)==264) winner = true;
+		if (cVal(2)+cVal(5)+cVal(8)==264) winner = true;
+		if (cVal(3)+cVal(6)+cVal(9)==264) winner = true;
+		if (cVal(1)+cVal(5)+cVal(9)==264) winner = true;
+		if (cVal(3)+cVal(5)+cVal(7)==264) winner = true;
+		return winner;
+	}
+
+	public static boolean isBoardFull(){
+		return Board.amountOfTurns == 9;
+	}
+
 }
