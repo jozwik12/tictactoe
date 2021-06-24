@@ -12,7 +12,6 @@ hs_err_pid*
 # Eclipse
 .classpath
 .project
-<<<<<<< HEAD
 .settings/
 
 # Intellij
@@ -36,8 +35,3 @@ bin/
 build/
 /bin1/
 java/build/**
-=======
-.idea/
-build/
-out/
->>>>>>> 9cc2775e3fde030266f92bd014b9e61c9e36905c
