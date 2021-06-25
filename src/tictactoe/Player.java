@@ -23,13 +23,14 @@ public class Player extends Behaviour{
     }
 
     int askForProperInput (){
+
         int position = 0;
         try {
             position = Integer.parseInt(input.next());
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
-        while ((position < 0) || (position > 9)){
+        while ((position < 1) || (position > 9)){
             System.out.println("Please select proper input (1-9)");
             position = Integer.parseInt(input.next());
         }
