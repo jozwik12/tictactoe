@@ -9,5 +9,5 @@ Project checklist
 - [X] Basic methods
 - [X] OOP approach
 - [X] Finished functionality
-- [ ] Upgraded code methods
+- [X] Upgraded code methods
 - [ ] GUI
