@@ -12,7 +12,7 @@ public class Computer extends Behaviour{
         System.out.println("Move by computer:");
         int position;
         do {
-            position = rand.nextInt(8)+1;
+            position = rand.nextInt(9)+1;
         } while(Board.checkIfPlaceOnBoardTaken(position));
 
         Board.putCharacterOntoBoard(position, symbol);
