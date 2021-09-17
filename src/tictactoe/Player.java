@@ -2,7 +2,7 @@ package tictactoe;
 
 import java.util.Scanner;
 
-public class Player extends Behaviour{
+public class Player extends Behaviour {
 
     Scanner input = new Scanner(System.in);
 
@@ -13,7 +13,7 @@ public class Player extends Behaviour{
         System.out.println("Pick a number 1-9 corresponding to spot on the board");
         int position = askForProperInput();
 
-        while (Board.checkIfPlaceOnBoardTaken(position)){
+        while (Board.checkIfPlaceOnBoardTaken(position)) {
             System.out.println("This place is occupied");
             position = askForProperInput();
         }
@@ -22,18 +22,21 @@ public class Player extends Behaviour{
         Board.printBoard();
     }
 
-    int askForProperInput (){
+    int askForProperInput() {
 
-        int position = 0;
-        try {
-            position = Integer.parseInt(input.next());
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-        }
-        while ((position < 1) || (position > 9)){
-            System.out.println("Please select proper input (1-9)");
-            position = Integer.parseInt(input.next());
-        }
+        int position;
+        do {
+            try {
+                position = Integer.parseInt(input.next());
+                if (position >= 1 && position <= 9) {
+                    break;
+                } else {
+                    System.out.println("Please select proper input (1-9)");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Please select proper input (1-9)");
+            }
+        } while (true);
         return position;
     }
 }
