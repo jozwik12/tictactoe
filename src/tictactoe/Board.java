@@ -11,7 +11,7 @@ public class Board {
            									{' ', '|', ' ', '|', ' '}
     };
 
-    private static Map<Integer, Position> positions = Map.of(
+    private static final Map<Integer, Position> positions = Map.of(
             1, new Position(0, 0),
             2, new Position(0, 2),
             3, new Position(0, 4),
